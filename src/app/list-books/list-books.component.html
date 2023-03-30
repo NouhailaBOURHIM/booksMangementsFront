@@ -1,0 +1,54 @@
+<h1>List of books:</h1>
+<div class="input-group mb-1">
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <div class="input-group mb-3">
+      <input class="form-control mr-sm-2" name="name" [(ngModel)]="name" type="search" placeholder="Search By Name" aria-label="Search">
+      <div class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0 form-inline" (click)="searchByName()" type="submit">Search</button></div>
+    </div>
+    </form>
+  </nav>
+  <nav class="navbar navbar-light bg-light mx-auto">
+    <form class="form-inline">
+      <div class="input-group mb-3">
+      <input name="category" [(ngModel)]="category" class="form-control mr-sm-2" type="search" placeholder="Search By Category" aria-label="Search">
+      <div class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0 form-inline" (click)="searchByCategory()" type="submit">Search</button></div>
+    </div>
+    </form>
+  </nav>
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <div class="input-group mb-3">
+      <input name="author" [(ngModel)]="author" class="form-control mr-sm-2" type="search" placeholder="Search By Author" aria-label="Search">
+      <div class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0 form-inline" (click)="searchByAuthor()" type="submit">Search</button></div>
+    </div>
+    </form>
+  </nav>
+</div>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ISBN</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Category</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{book.isbn}}</td>
+          <td>{{book.name}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.category}}</td>
+          <td>
+            <button  (click)="updateBook(book.id)" class = "btn btn-primary"> Update</button>
+            <button (click)="deleteBook(book.id)"  class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            <button (click)="viewBook(book.id)" class = "btn btn-primary" style="margin-left: 10px"> View</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
